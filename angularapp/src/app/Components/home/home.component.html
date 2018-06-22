@@ -1,0 +1,14 @@
+<div class="col-lg-10 offset-lg-1 panel">
+    <div class="jumbotron">
+        <h1>{{title}}</h1>
+        <p>App de productos varios</p>
+        <p *ngIf="identity">
+            <a [routerLink]="['/user']" class="btn btn-success">User</a>
+            <a [routerLink]="['/product']" class="btn btn-secondary">Products</a>
+            <a [routerLink]="['/addproduct']" class="btn btn-primary">AddProduct</a>
+        </p>
+        <p *ngIf="!identity">
+            <a [routerLink]="['/product']" class="btn btn-secondary">Products</a>
+        </p>
+    </div>
+</div>

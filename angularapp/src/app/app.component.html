@@ -1,0 +1,38 @@
+<p-menubar [model]="items">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
+            <li  class="nav-item">
+                <a class="nav-link" [routerLink]="['login']" [routerLinkActive]="['active']" href="">Entrar</a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" [routerLink]="['register']" [routerLinkActive]="['active']" href="">Registrar</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+                <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['user-edit']">Usuario</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['product']">Producto</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['addproduct']">Agregar Producto</a>
+                </li>
+            
+            <li class="nav-item navname">
+                <div *ngIf="identity.image && identity.image != 'Null'" class="userConImg">
+                    <img src="http://localhost:4000/get-image-user/{{identity.image}}" alt="" style="width:60px;height:32px">
+                    <i class="pi pi-user">{{identity.name}}</i>
+                </div>
+                <div *ngIf="identity.image == 'Null'" class="userSinImg">
+                    <i class="pi pi-user">{{identity.name}}</i> 
+                </div>
+               
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['home']" (click)="logout()"  >Salir</a>
+            </li>
+        </ul>
+    </div>
+</p-menubar>
+<router-outlet></router-outlet>

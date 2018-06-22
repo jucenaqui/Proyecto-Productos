@@ -1,0 +1,24 @@
+<div class="col-lg-6">
+        <h3>{{title}}</h3>
+        <div *ngIf="messageExit" class="alert alert-success">
+                {{messageExit}}
+        </div>
+        <div *ngIf="messageError" class="alert alert-danger">
+                {{messageError}}
+        </div><br>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="col-lg-6">
+            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Correo Electrónico</span>
+                    </div>
+                    <input class="form-control" type="email" #email="ngModel" [(ngModel)]="user.email" name="email" placeholder="Correo Electrónico" required>         
+            </div>
+            <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                    </div>
+                    <input type="password" #password="ngModel" [(ngModel)]="user.password" name="password" pInputText placeholder="Contraseña" required>         
+            </div>
+        <p-button type="submit" label="Entrar" icon="fa fa-check" iconPos="left" [disabled]="!loginForm.form.valid"></p-button>
+    </form>
+</div>

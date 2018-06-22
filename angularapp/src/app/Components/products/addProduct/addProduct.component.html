@@ -1,0 +1,53 @@
+<h2>{{title}}</h2>
+<div class="col-lg-5">
+    <div *ngIf="messageExit" class="alert alert-success">
+            {{messageExit}}
+    </div>
+    <div *ngIf="messageError" class="alert alert-danger">
+            {{messageError}}
+    </div><br>
+    <form #productForm="ngForm" (ngSubmit)="saveProduct(productForm)">
+        <span>
+            <span class="label-control" for="nombreproducto">Nombre</span>
+            <input #nombreproducto="ngModel" [(ngModel)]="product.NombreProducto" name="nombreproducto"  type="text"  class="form-control" required>
+        </span>
+        <span>
+            <span class="label-control" for="caracteristicas">Caracteristicas</span>
+            <!-- <input type="text" id="caracteristicas" class="form-control"> -->
+            <textarea #caracteristicas="ngModel" [(ngModel)]="product.Caracteristicas" name="caracteristicas" class="form-control" id="caracteristicas"  required></textarea>
+        </span>
+        <span>
+            <span class="label-control" for="fechalanzamiento">Fecha Lanzamiento</span>
+            <!-- <input type="text" id="caracteristicas" class="form-control"> -->
+            <p-calendar #fechalanzamiento="ngModel" [showIcon]="true"  class="form-control" showButtonBar="true" [(ngModel)]="product.FechaLanzamiento" name="fechalanzamiento" required></p-calendar>
+            <!-- <input type="date" #fechalanzamiento="ngModel" [(ngModel)]="product.FechaLanzamiento" name="fechalanzamiento" class="form-control" id="fechalanzamiento" pInputText required/> -->
+        </span>
+        <span>
+            <span class="label-control" for="correofabricante">Correo Fabricante</span>
+            <input #correofabricante="ngModel" [(ngModel)]="product.CorreoFabricante" name="correofabricante" pInputText type="email" id="correofabricante" class="form-control" required>
+        </span>
+        <span>
+            <span class="label-control" for="paisfabricacion">Pais Fabricación</span>
+            <p-dropdown  [filter]="true" filterBy="label,value.name"  #paisfabricacion="ngModel" [(ngModel)]="product.PaisFabricacion" name="paisfabricacion" [options]="cities" optionLabel="name" class="form-control" required></p-dropdown>
+        </span>
+        <span>
+            <span class="label-control" for="precio">Precio</span>
+            <input #precio="ngModel" [(ngModel)]="product.Precio" name="precio" type="number" id="precio" class="form-control" required>
+        </span>
+        <span>
+            <span class="label-control" for="unidadesdisponibles">Unidades Disponibles</span>
+            <input #unidadesdisponibles="ngModel" [(ngModel)]="product.UnidadesDisponibles" name="unidadesdisponibles" type="number" id="unidadesdisponibles" class="form-control" required>
+        </span>
+        <span>
+            <span class="label-control" for="unidadesvendidas">Unidades Vendidas</span>
+            <input #unidadesvendidas="ngModel" [(ngModel)]="product.UnidadesVendidas" name="unidadesvendidas" type="number" id="unidadesvendidas" class="form-control" required>
+        </span>
+        <span>
+            <p-button type="submit" label="Entrar" icon="fa fa-check" iconPos="left" [disabled]="!productForm.form.valid"></p-button>
+        </span>
+        <span>
+            <p-button type="button" value="cerrar" (click)="cerrar()" label="Cerrar"></p-button>
+        </span>
+    </form>
+    
+</div>

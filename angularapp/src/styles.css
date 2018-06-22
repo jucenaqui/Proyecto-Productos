@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+.ui-menubar ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-item {
+    margin: 0px 3px;
+    width: 140px;
+    text-align: center;
+}
+.nav-item:hover {
+    background-color: #80808054;
+    border-radius: 5px;
+}
+.nav-item a:hover {
+    color: white;
+}
+.nav-item .active {
+    background-color: #80808054 !important;
+    border-radius: 5px;
+}
+.ui-inputgroup{
+    margin: 2px;
+}
+
+.alert-success{
+    margin: 5px 0px;
+}
+.alert-danger{
+    margin: 5px 0px;
+}
+.navname{
+    width: 200px;
+    margin-top: 4px;
+    padding-top: 5px;
+    color: cadetblue;
+    background-color: lavenderblush;
+    border-radius: 11px;
+    height: 35px;
+}
+.pi-user{
+    font-size: 1.2em;
+}

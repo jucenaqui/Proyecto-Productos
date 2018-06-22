@@ -1,0 +1,58 @@
+<h2>{{title}}</h2>
+<div *ngIf="messageExit" class="alert alert-success">
+        {{messageExit}}
+</div>
+<div *ngIf="messageError" class="alert alert-danger">
+        {{messageError}}
+</div><br>
+<p-table #dt [value]="tableProducts"
+             [columns]="headers"
+             [responsive]="true"
+             [rows]="5" [paginator]="true" 
+             [pageLinks]="3" 
+             [rowsPerPageOptions]="[5,10,20]"
+             [responsive]="true"
+             sortField="Caracteristicas" 
+             sortMode="multiple">
+        <ng-template pTemplate="header" let-columns>
+                <tr>
+                        <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                
+                                {{col.header}}
+                                <input style="width:150px" *ngSwitchCase="'NombreProducto'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                                <input style="width:150px" *ngSwitchCase="'UnidadesVendidas'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
+                                <div *ngIf="col.field != 'NombreProducto' && col.field != 'PaisFabricacion' && col.field != 'FechaLanzamiento' && col.field != 'CorreoFabricante' && col.field != 'Caracteristicas' && col.field != 'UnidadesVendidas'" 
+                                [pSortableColumn]="col.field"><p-sortIcon [field]="col.field"></p-sortIcon></div>
+                                
+                               
+                        </th>
+                        <th style="width:80px;text-align:center">Eliminar</th>
+                </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr>
+                        <td *ngFor="let col of columns">
+                                {{rowData[col.field]}}
+                        </td>
+                        <td style="width:80px">
+                                <button class="btn btn-danger " data-tr="" (click)="eliminar(rowData)" type="button" ><i class="pi pi-trash"></i></button>
+                        </td>
+                </tr>
+        </ng-template>
+    <!-- <p-column field="NombreProducto" id="id" [filter]="true" header="Nombre Producto"></p-column>
+    <p-column field="Caracteristicas" id="NombreProducto" header="Caracteristicas" [sortable]="true"></p-column>
+    <p-column field="FechaLanzamiento" id="NombreProducto" header="Fecha Lanzamiento"></p-column>
+    <p-column field="CorreoFabricante" id="NombreProducto" [filter]="true" [sortable]="true" header="Correo Fabricante"></p-column>
+    <p-column field="PaisFabricacion" id="NombreProducto" header="Pais Fabricacion"></p-column>
+    <p-column [style]="{'width':'80px'}">  
+        <ng-template  pTemplate="header">
+        <th>Eliminar</th>
+        </ng-template>      
+        <ng-template  pTemplate="body">
+                <button class="btn btn-danger " data-tr="" (click)="eliminar($event)" type="button" ><i class="pi pi-trash"></i></button>
+        </ng-template>
+     </p-column>  -->
+ 
+            
+                
+</p-table>
